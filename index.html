@@ -44,11 +44,11 @@
     {
         graphics2.clear();
         // graphics2.fillPointShape(point1, 1);
-        var w = 700;
-        var h = 700;
+        var w = config.scale.width;
+        var h = config.scale.height;
         var vW = w*h;
         var UW = 2*(w+h);
-        var maxR = 700;
+        var maxR = w;
         var pairdist = [];
         for (var i = 0; i < maxR; i++) {
             pairdist[i] = 0;
@@ -75,7 +75,8 @@
             var r = i;
             std[i] = Math.sqrt(2/Math.pow(lambda,2)*(Math.PI*r*r/vW + 0.96*UW/(vW*vW)*r*r*r + 0.13*lambda*UW/(vW*vW)*Math.pow(r,5)));
         }
-        var scale = -0.001;
+
+        var scale = -maxR/4/std[maxR-1];
         var y0 = h/2;
         if (Kfunction) {
             scale = -0.0003;
@@ -114,8 +115,8 @@
 
     function create ()
     {
-        var w = config.width;
-        var h = config.height;
+        var w = config.scale.width;
+        var h = config.scale.height;
 
         graphics = this.add.graphics({ fillStyle: { color: 0x2266aa } });
         graphics2 = this.add.graphics({ fillStyle: { color: 0xaa2266 } });
