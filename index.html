@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser-arcade-physics.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.21.0/dist/phaser.min.js"></script>
 </head>
 <body>
 
     <script>
     var config = {
         type: Phaser.AUTO,
-        width: 800,
-        height: 600,
+        // width: 800,
+        // height: 600,
+        scale: {
+            mode: Phaser.Scale.FIT,
+            autoCenter: Phaser.Scale.CENTER_BOTH,
+            // parent: "thegame",
+            width: 700,
+            height: 700
+        },
         scene: {
             preload: preload,
             create: create
@@ -29,7 +36,7 @@
     function addpoint(x, y)
     {
         var point1 = new Phaser.Geom.Point(x, y);
-        graphics.fillPointShape(point1, 15);
+        graphics.fillPointShape(point1, 5);
         points.push({x:x, y:y});
         draw();
     }
@@ -37,11 +44,11 @@
     {
         graphics2.clear();
         // graphics2.fillPointShape(point1, 1);
-        var w = 800;
-        var h = 600;
+        var w = 700;
+        var h = 700;
         var vW = w*h;
         var UW = 2*(w+h);
-        var maxR = 800;
+        var maxR = 700;
         var pairdist = [];
         for (var i = 0; i < maxR; i++) {
             pairdist[i] = 0;
